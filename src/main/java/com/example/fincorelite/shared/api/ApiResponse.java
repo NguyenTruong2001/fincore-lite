@@ -7,12 +7,22 @@ public record ApiResponse<T>(
         T data,
         ApiMeta meta
 ) {
+
     public ApiResponse {
         if (!success) {
-            throw new IllegalArgumentException("success must be true for ApiResponse");
+            throw new IllegalArgumentException(
+                    "success must be true"
+            );
         }
-        Objects.requireNonNull(data, "data must not be null");
-        Objects.requireNonNull(meta, "meta must not be null");
-    }
 
+        Objects.requireNonNull(
+                data,
+                "data must not be null"
+        );
+
+        Objects.requireNonNull(
+                meta,
+                "meta must not be null"
+        );
+    }
 }
