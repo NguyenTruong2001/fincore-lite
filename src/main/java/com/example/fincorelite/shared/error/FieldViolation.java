@@ -2,18 +2,45 @@ package com.example.fincorelite.shared.error;
 
 import java.util.Objects;
 
-public record FieldViolation(String field, String message) {
+
+public record FieldViolation(
+        String field,
+        String code,
+        String message
+) {
+
     public FieldViolation {
-        field = requireNonBlank(field, "field must not be blank");
-        message = requireNonBlank(message, "message must not be blank");
+        field = requireText(
+                field,
+                "field"
+        );
+
+        code = requireText(
+                code,
+                "code"
+        );
+
+        message = requireText(
+                message,
+                "message"
+        );
     }
 
-    private static String requireNonBlank(String value,
-                                          String errorMessage) {
-        Objects.requireNonNull(value, errorMessage);
+    private static String requireText(
+            String value,
+            String fieldName
+    ) {
+        Objects.requireNonNull(
+                value,
+                fieldName + " must not be null"
+        );
+
         if (value.isBlank()) {
-            throw new IllegalArgumentException(errorMessage);
+            throw new IllegalArgumentException(
+                    fieldName + " must not be blank"
+            );
         }
+
         return value;
     }
 }

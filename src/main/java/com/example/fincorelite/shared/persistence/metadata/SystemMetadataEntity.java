@@ -1,10 +1,8 @@
 package com.example.fincorelite.shared.persistence.metadata;
 
 import com.example.fincorelite.shared.persistence.audit.MutableAuditEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.springframework.data.domain.Persistable;
 
 import java.util.Objects;
 
@@ -14,7 +12,8 @@ import java.util.Objects;
         schema = "fincore"
 )
 public class SystemMetadataEntity
-        extends MutableAuditEntity {
+        extends MutableAuditEntity
+        implements Persistable<String> {
 
     private static final int MAX_KEY_LENGTH = 100;
     private static final int MAX_VALUE_LENGTH = 500;
@@ -34,6 +33,9 @@ public class SystemMetadataEntity
             length = MAX_VALUE_LENGTH
     )
     private String metadataValue;
+
+    @Transient
+    private boolean newEntity = true;
 
     protected SystemMetadataEntity() {
     }
@@ -55,6 +57,16 @@ public class SystemMetadataEntity
         );
     }
 
+    @Override
+    public String getId() {
+        return metadataKey;
+    }
+
+    @Override
+    public boolean isNew() {
+        return newEntity;
+    }
+
     public String getMetadataKey() {
         return metadataKey;
     }
@@ -71,6 +83,12 @@ public class SystemMetadataEntity
                 "metadataValue",
                 MAX_VALUE_LENGTH
         );
+    }
+
+    @PostLoad
+    @PostPersist
+    private void markNotNew() {
+        newEntity = false;
     }
 
     private static String requireText(
