@@ -1,8 +1,19 @@
 HELP.md
 target/
-.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+
+### Secrets ###
+# .env chứa credential local, KHÔNG commit. Chỉ commit .env.example.
+.env
+.env.*
+!.env.example
+
+### Maven ###
+# Maven Wrapper (mvnw, mvnw.cmd, .mvn/wrapper/maven-wrapper.properties)
+# PHẢI được commit để người clone repo chạy được ./mvnw test.
+# Chỉ bỏ qua binary jar tải về.
+.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
 .apt_generated
@@ -31,7 +42,4 @@ build/
 
 ### VS Code ###
 .vscode/
-# Bỏ qua toàn bộ Maven Wrapper script
-mvnw
-mvnw.cmd
-.mvn/
+src/test/

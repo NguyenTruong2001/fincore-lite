@@ -38,11 +38,32 @@ public final class ErrorHttpMapping {
                             "One or more request parameters have an invalid type"
                     );
 
+            case COMMON_MISSING_PARAMETER ->
+                    descriptor(
+                            HttpStatus.BAD_REQUEST,
+                            "Missing request parameter",
+                            "A required request parameter is missing"
+                    );
+
             case COMMON_RESOURCE_NOT_FOUND ->
                     descriptor(
                             HttpStatus.NOT_FOUND,
                             "Resource not found",
                             "The requested resource was not found"
+                    );
+
+            case COMMON_METHOD_NOT_ALLOWED ->
+                    descriptor(
+                            HttpStatus.METHOD_NOT_ALLOWED,
+                            "Method not allowed",
+                            "The HTTP method is not supported for this resource"
+                    );
+
+            case COMMON_UNSUPPORTED_MEDIA_TYPE ->
+                    descriptor(
+                            HttpStatus.UNSUPPORTED_MEDIA_TYPE,
+                            "Unsupported media type",
+                            "The request content type is not supported"
                     );
 
             case SYSTEM_METADATA_NOT_FOUND ->
