@@ -2,6 +2,14 @@ spring:
   application:
     name: fincore-lite
 
+  # Profile `local` là mặc định an toàn: datasource URL chỉ tồn tại trong
+  # application-local.yml, nên không có dòng này app sẽ fail khi khởi động
+  # với "Failed to configure a DataSource".
+  # Môi trường thật phải bật profile một cách tường minh
+  # (SPRING_PROFILES_ACTIVE), không bao giờ mặc định trỏ vào production.
+  profiles:
+    default: local
+
   datasource:
     hikari:
       pool-name: FincoreHikariPool
