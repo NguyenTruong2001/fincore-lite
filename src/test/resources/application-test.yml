@@ -1,0 +1,15 @@
+# Profile dành riêng cho integration test.
+#
+# KHÔNG khai báo spring.datasource.* ở đây. Datasource phải đến từ
+# @ServiceConnection của Testcontainers, để test không bao giờ có đường
+# kết nối nhầm vào database dev trên localhost.
+
+spring:
+  flyway:
+    # Mỗi test dùng container mới nên schema luôn sạch; bật clean cho phép
+    # test nào cần reset schema tự làm được.
+    clean-disabled: false
+
+logging:
+  level:
+    org.flywaydb: INFO
