@@ -1,4 +1,4 @@
-package com.example.fincorelite.shared.persistence.metadata;
+package com.example.fincorelite.system.domain;
 
 import com.example.fincorelite.shared.persistence.audit.MutableAuditEntity;
 import jakarta.persistence.*;
@@ -6,11 +6,13 @@ import org.springframework.data.domain.Persistable;
 
 import java.util.Objects;
 
+/*
+ * Schema cố tình KHÔNG khai báo ở đây. `hibernate.default_schema` trong
+ * application.yml đã quy định schema, hardcode thêm lần nữa sẽ khoá cứng
+ * khả năng đổi schema qua config (ví dụ chạy Testcontainers song song).
+ */
 @Entity
-@Table(
-        name = "system_metadata",
-        schema = "fincore"
-)
+@Table(name = "system_metadata")
 public class SystemMetadataEntity
         extends MutableAuditEntity
         implements Persistable<String> {

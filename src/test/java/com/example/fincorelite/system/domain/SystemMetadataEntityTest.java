@@ -1,4 +1,4 @@
-package com.example.fincorelite.shared.persistence.metadata;
+package com.example.fincorelite.system.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

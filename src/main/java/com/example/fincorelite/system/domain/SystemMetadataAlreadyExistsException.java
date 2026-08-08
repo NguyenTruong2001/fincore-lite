@@ -1,4 +1,4 @@
-package com.example.fincorelite.shared.persistence.metadata;
+package com.example.fincorelite.system.domain;
 
 import com.example.fincorelite.shared.error.BusinessException;
 import com.example.fincorelite.shared.error.ErrorCode;

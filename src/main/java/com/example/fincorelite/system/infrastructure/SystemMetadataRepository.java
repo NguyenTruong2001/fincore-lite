@@ -1,5 +1,6 @@
-package com.example.fincorelite.shared.persistence.metadata;
+package com.example.fincorelite.system.infrastructure;
 
+import com.example.fincorelite.system.domain.SystemMetadataEntity;
 import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;

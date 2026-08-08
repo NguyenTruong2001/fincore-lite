@@ -1,7 +1,7 @@
 package com.example.fincorelite.shared.error;
 
-import com.example.fincorelite.shared.persistence.metadata.SystemMetadataAlreadyExistsException;
-import com.example.fincorelite.shared.persistence.metadata.SystemMetadataNotFoundException;
+import com.example.fincorelite.system.domain.SystemMetadataAlreadyExistsException;
+import com.example.fincorelite.system.domain.SystemMetadataNotFoundException;
 import com.example.fincorelite.shared.web.correlation.CorrelationIdAccessor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
